@@ -16,6 +16,7 @@ class CreateResepsTable extends Migration
         Schema::create('reseps', function (Blueprint $table) {
             $table->id();
             $table->integer('user_id');
+            $table->integer('kategori_id');
             $table->string('judul');
             $table->string('slug');
             $table->string('deskripsi');

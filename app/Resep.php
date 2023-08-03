@@ -29,6 +29,6 @@ class Resep extends Model
 
     public function resepKategori()
     {
-        return $this->hasOne('App\Resep_kategori', 'resep_id', 'id');
+        return $this->belongsTo('App\Resep_kategori', 'kategori_id', 'id');
     }
 }

@@ -38,7 +38,7 @@
                     <a href="#">Resep</a>
                 </li>
                 <li>
-                    <a href="#">Kategori</a>
+                    <a href="/kategori">Kategori</a>
                 </li>
                 <li>
                     <a href="#">Artikel</a>

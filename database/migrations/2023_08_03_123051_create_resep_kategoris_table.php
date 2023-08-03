@@ -15,7 +15,6 @@ class CreateResepKategorisTable extends Migration
     {
         Schema::create('resep_kategoris', function (Blueprint $table) {
             $table->id();
-            $table->integer('resep_id');
             $table->string('nama');
             $table->string('slug');
             $table->timestamps();
