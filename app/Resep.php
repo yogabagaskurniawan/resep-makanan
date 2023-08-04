@@ -8,13 +8,12 @@ class Resep extends Model
 {
     protected $fillable = [
         'user_id',
+        'kategori_id',
         'judul',
         'deskripsi',
         'slug',
         'durasi',
-        'hasil',
-        'bahan',
-        'cara_membuat',
+        'porsi',
     ];
 
     public function user()
@@ -25,6 +24,16 @@ class Resep extends Model
     public function resepGambar()
     {
         return $this->hasMany('App\Resep_gambar', 'resep_id', 'id');
+    }
+
+    public function bahanResep()
+    {
+        return $this->hasMany('App\BahanResep', 'resep_id', 'id');
+    }
+
+    public function langkahMembuat()
+    {
+        return $this->hasMany('App\LangkahMembuat', 'resep_id', 'id');
     }
 
     public function resepKategori()

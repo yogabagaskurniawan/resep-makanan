@@ -20,7 +20,15 @@ Route::get('/', function () {
 
 Auth::routes();
 
-Route::get('/home', 'HomeController@index')->name('home');
+// Route::get('/home', 'HomeController@index')->name('home');
 
 // kategori
 Route::resource('/kategori', 'kategoriController');
+
+// resep
+Route::get('/resep', 'ResepController@index');
+Route::get('resep/create', 'ResepController@create');
+Route::post('resep', 'ResepController@store');
+Route::get('resep/{id}/edit', 'ResepController@edit');
+Route::put('resep/{id}', 'ResepController@update');
+Route::delete('resep/{id}', 'ResepController@destroy');

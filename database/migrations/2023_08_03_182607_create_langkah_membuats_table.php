@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateResepsTable extends Migration
+class CreateLangkahMembuatsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,15 +13,10 @@ class CreateResepsTable extends Migration
      */
     public function up()
     {
-        Schema::create('reseps', function (Blueprint $table) {
+        Schema::create('langkah_membuats', function (Blueprint $table) {
             $table->id();
-            $table->integer('user_id');
-            $table->integer('kategori_id');
-            $table->string('judul');
-            $table->string('slug');
-            $table->text('deskripsi');
-            $table->string('durasi');
-            $table->string('porsi');
+            $table->integer('resep_id');
+            $table->text('keterangan');
             $table->timestamps();
         });
     }
@@ -33,6 +28,6 @@ class CreateResepsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('reseps');
+        Schema::dropIfExists('langkah_membuats');
     }
 }
