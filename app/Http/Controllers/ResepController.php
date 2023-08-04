@@ -2,14 +2,15 @@
 
 namespace App\Http\Controllers;
 
-use App\BahanResep;
-use App\LangkahMembuat;
 use App\Resep;
+use App\BahanResep;
 use App\Resep_gambar;
+use App\LangkahMembuat;
 use App\Resep_kategori;
 use Illuminate\Support\Str;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Validator;
 
 
@@ -152,4 +153,63 @@ class ResepController extends Controller
 
         return back()->with('success','Resep berhasil dihapus');
     }
+
+    // =========== START GAMBAR RESEP MAKANAN ================
+    
+    public function tambahGambar($id)
+    {
+        if(empty($id)) {
+            return redirect('/resep');
+        }
+
+        $resep = Resep::findOrFail($id);
+        // $gambarResep = $resep->resepGambar;
+
+        return view('admin.resep.gambarResep.gambar', compact('resep'));
+    }
+
+    public function storeGambar(Request $request, $id)
+    {
+        $validator = Validator::make($request->all(), [
+            'nama' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048'
+        ]);
+
+        if ($validator->fails()) {
+            return redirect()->back()
+                ->withErrors($validator)
+                ->withInput();
+        }
+
+        $resep = Resep::findOrFail($id);
+
+        if ($request->hasFile('nama')) {
+            $image = $request->file('nama');
+            $name = Str::slug($resep->judul) . '_' . time();
+            $filename = $name . '.' . $image->getClientOriginalExtension();
+
+            $folder = '/uploads/images';
+            $filePath = $image->storeAs($folder, $filename, 'public');
+
+            $data = [
+                'resep_id' => $resep->id,
+                'nama' => $filePath
+            ];
+
+            Resep_gambar::create($data);
+            return redirect('resep/' . $id . '/gambar-makanan')->with('success', 'Gambar berhasil ditambahkan');
+        }
+    }
+
+    public function removeGambar($id)
+    {
+        $gambar = Resep_gambar::findOrFail($id);
+
+        // Menghapus gambar dari folder penyimpanan
+        Storage::disk('public')->delete($gambar->nama);
+
+        $gambar->delete();
+
+        return redirect('resep/' . $gambar->resep->id . '/gambar-makanan')->with('success','Data berhasil dihapus');
+    }
+    // =========== END GAMBAR RESEP MAKANAN ================
 }
