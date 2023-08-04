@@ -51,3 +51,6 @@ Route::post('resep/cara-membuat/{id}', 'ResepController@storeCaraMembuat');
 Route::get('resep/cara-membuat/{id}/edit', 'ResepController@editCaraMembuat');
 Route::put('resep/cara-membuat/{id}', 'ResepController@updateCaraMembuat');
 Route::delete('resep/cara-membuat/{id}', 'ResepController@removeCaraMembuat');
+
+// artikel
+Route::resource('/artikel', 'ArtikelController');

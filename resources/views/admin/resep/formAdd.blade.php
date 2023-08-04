@@ -56,21 +56,9 @@
             <trix-editor input="deskripsi"></trix-editor>
           </div>
           
-
-          {{-- @if ($product)
-            @if ($product->parent_id == NULL)
-              @include('admin.products.configurable')
-            @else
-              @include('admin.products.simple')                            
-            @endif
-            <div class="form-group">
-                <label for="description">Description</label>
-                <textarea name="description" class="form-control" placeholder="description">{{ !empty($product) ? $product->description : '' }}</textarea>
-            </div>
-          @endif --}}
           <div class="form-footer pt-5 border-top">
             <button type="submit" class="btn btn-primary btn-default">Save</button>
-            <a href="{{ url('products') }}" class="btn btn-secondary btn-default">Back</a>
+            <a href="{{ url('/resep') }}" class="btn btn-secondary btn-default">Back</a>
           </div>
         </form>
       </div>

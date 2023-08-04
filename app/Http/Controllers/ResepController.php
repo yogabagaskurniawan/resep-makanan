@@ -132,6 +132,7 @@ class ResepController extends Controller
             'durasi' => $request->durasi,
             'porsi' => $request->porsi,
             'deskripsi' => $request->deskripsi,
+            'slug' => Str::slug($request->judul),
             'kategori_id' => $request->selected_category,
         ]);
 

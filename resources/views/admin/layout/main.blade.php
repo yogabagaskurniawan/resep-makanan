@@ -50,7 +50,7 @@
                     <a href="/kategori">Kategori</a>
                 </li>
                 <li>
-                    <a href="#">Artikel</a>
+                    <a href="/artikel">Artikel</a>
                 </li>
             </ul>
         </nav>

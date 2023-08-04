@@ -63,7 +63,7 @@
           </div>
           <div class="form-footer pt-5 border-top">
             <button type="submit" class="btn btn-primary btn-default">Save</button>
-            <a href="{{ url('products') }}" class="btn btn-secondary btn-default">Back</a>
+            <a href="{{ url('/resep') }}" class="btn btn-secondary btn-default">Back</a>
           </div>
         </form>
       </div>
