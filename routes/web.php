@@ -44,3 +44,10 @@ Route::post('resep/bahan/{id}', 'ResepController@storeBahan');
 Route::get('resep/bahan/{id}/edit', 'ResepController@editBahan');
 Route::put('resep/bahan/{id}', 'ResepController@updateBahan');
 Route::delete('resep/bahan/{id}', 'ResepController@removeBahan');
+
+// cara membuat makanan
+Route::get('resep/{id}/cara-membuat', 'ResepController@tambahCaraMembuat');
+Route::post('resep/cara-membuat/{id}', 'ResepController@storeCaraMembuat');
+Route::get('resep/cara-membuat/{id}/edit', 'ResepController@editCaraMembuat');
+Route::put('resep/cara-membuat/{id}', 'ResepController@updateCaraMembuat');
+Route::delete('resep/cara-membuat/{id}', 'ResepController@removeCaraMembuat');

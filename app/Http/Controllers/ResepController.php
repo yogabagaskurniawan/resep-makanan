@@ -214,13 +214,13 @@ class ResepController extends Controller
 
     // =========== START BAHAN MAKANAN ================
     
-    public function tambahBahan($attributeID)
+    public function tambahBahan($id)
     {
-        if(empty($attributeID)) {
+        if(empty($id)) {
             return redirect('/resep');
         }
 
-        $resep = Resep::findOrFail($attributeID);
+        $resep = Resep::findOrFail($id);
 
         return view('admin.resep.bahanResep.bahan', compact('resep'));
     }
@@ -294,4 +294,87 @@ class ResepController extends Controller
         
     }
     // =========== END BAHAN MAKANAN ================
+    
+    // =========== START CARA MEMBUAT MAKANAN ================
+
+    public function tambahCaraMembuat($id)
+    {
+        if(empty($id)) {
+            return redirect('/resep');
+        }
+
+        $resep = Resep::findOrFail($id);
+
+        return view('admin.resep.caraMembuat.membuat', compact('resep'));
+    }
+
+    public function storeCaraMembuat(Request $request, $id)
+    {
+        if(empty($id)){
+            return redirect('/resep');
+        }
+
+        $data = [
+            'keterangan' => $request->keterangan,
+            'resep_id' => $request->resep_id,
+        ];
+    
+        $validator = Validator::make($request->all(), [
+            'keterangan' => 'required',
+        ]);
+    
+        if ($validator->fails()) {
+            return redirect()->back()
+                ->withErrors($validator)
+                ->withInput();
+        }
+    
+        LangkahMembuat::create($data);
+        return redirect('resep/'.$id.'/cara-membuat')->with('success','Bahan berhasil ditambahkan');
+    }
+
+    public function editCaraMembuat($id)
+    {
+        $langkahMembuat = LangkahMembuat::findOrFail($id);
+        $resep = $langkahMembuat->resep;
+
+        return view('admin.resep.caraMembuat.membuat', compact('langkahMembuat','resep'));
+    }
+
+    public function updateCaraMembuat(Request $request, $id)
+    {
+        $validator = Validator::make($request->all(), [
+            'keterangan' => 'required',
+        ]);
+
+        if ($validator->fails()) {
+            return redirect()->back()
+                ->withErrors($validator)
+                ->withInput();
+        }
+        
+        $langkahMembuat = LangkahMembuat::findOrFail($id);
+        $langkahMembuat->update([
+            'keterangan' => $request->keterangan,
+        ]);
+
+        return redirect('resep/'.$langkahMembuat->resep->id.'/cara-membuat')->with('success','Bahan berhasil diubah');
+    }
+
+    public function removeCaraMembuat($id)
+    {
+        if (empty($id)) {
+            return redirect('/resep');
+        }
+        
+        
+        $langkahMembuat = LangkahMembuat::findOrFail($id);
+        $resepId = $langkahMembuat->resep->id; 
+        
+        $langkahMembuat->delete();
+        
+        return redirect('resep/' . $resepId . '/cara-membuat')->with('success', 'Bahan berhasil dihapus');
+        
+    }
+    // =========== END CARA MEMBUAT MAKANAN ================
 }
