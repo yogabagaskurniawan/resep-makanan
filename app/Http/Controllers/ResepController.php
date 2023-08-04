@@ -163,7 +163,6 @@ class ResepController extends Controller
         }
 
         $resep = Resep::findOrFail($id);
-        // $gambarResep = $resep->resepGambar;
 
         return view('admin.resep.gambarResep.gambar', compact('resep'));
     }
@@ -212,4 +211,87 @@ class ResepController extends Controller
         return redirect('resep/' . $gambar->resep->id . '/gambar-makanan')->with('success','Data berhasil dihapus');
     }
     // =========== END GAMBAR RESEP MAKANAN ================
+
+    // =========== START BAHAN MAKANAN ================
+    
+    public function tambahBahan($attributeID)
+    {
+        if(empty($attributeID)) {
+            return redirect('/resep');
+        }
+
+        $resep = Resep::findOrFail($attributeID);
+
+        return view('admin.resep.bahanResep.bahan', compact('resep'));
+    }
+    
+    public function storeBahan(Request $request, $id)
+    {
+        if(empty($id)){
+            return redirect('/resep');
+        }
+
+        $data = [
+            'keterangan' => $request->keterangan,
+            'resep_id' => $request->resep_id,
+        ];
+    
+        $validator = Validator::make($request->all(), [
+            'keterangan' => 'required',
+        ]);
+    
+        if ($validator->fails()) {
+            return redirect()->back()
+                ->withErrors($validator)
+                ->withInput();
+        }
+    
+        BahanResep::create($data);
+        return redirect('resep/'.$id.'/bahan-makanan')->with('success','Bahan berhasil ditambahkan');
+    }
+
+    public function editBahan($id)
+    {
+        $bahanResep = BahanResep::findOrFail($id);
+        $resep = $bahanResep->resep;
+
+        return view('admin.resep.bahanResep.bahan', compact('bahanResep','resep'));
+    }
+
+    public function updateBahan(Request $request, $id)
+    {
+        $validator = Validator::make($request->all(), [
+            'keterangan' => 'required',
+        ]);
+
+        if ($validator->fails()) {
+            return redirect()->back()
+                ->withErrors($validator)
+                ->withInput();
+        }
+        
+        $bahanResep = BahanResep::findOrFail($id);
+        $bahanResep->update([
+            'keterangan' => $request->keterangan,
+        ]);
+
+        return redirect('resep/'.$bahanResep->resep->id.'/bahan-makanan')->with('success','Bahan berhasil diubah');
+    }
+
+    public function removeBahan($id)
+    {
+        if (empty($id)) {
+            return redirect('/resep');
+        }
+        
+        
+        $bahanResep = BahanResep::findOrFail($id);
+        $resepId = $bahanResep->resep->id; 
+        
+        $bahanResep->delete();
+        
+        return redirect('resep/' . $resepId . '/bahan-makanan')->with('success', 'Bahan berhasil dihapus');
+        
+    }
+    // =========== END BAHAN MAKANAN ================
 }

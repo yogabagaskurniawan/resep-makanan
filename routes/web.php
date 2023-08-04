@@ -34,12 +34,13 @@ Route::put('resep/{id}', 'ResepController@update');
 Route::delete('resep/{id}', 'ResepController@destroy');
 
 // gambar resep
-// Route::get('products/{productID}/images','ProductController@images');
 Route::get('resep/{id}/gambar-makanan','ResepController@tambahGambar');
 Route::post('resep/gambar/{id}','ResepController@storeGambar');
 Route::delete('resep/gambar/{id}', 'ResepController@removeGambar');
-// Route::get('resep/{id}/gambar-makanan', 'ResepController@tambahGambar');
-// Route::post('resep/gambar/{id}', 'ResepController@storeGambar');
-// Route::get('resep/gambar/{id}/edit', 'ResepController@editGambar');
-// Route::put('resep/gambar/{id}', 'ResepController@updateGambar');
-// Route::delete('resep/gambar/{id}', 'ResepController@removeGambar');
+
+// bahan makanan
+Route::get('resep/{id}/bahan-makanan', 'ResepController@tambahbahan');
+Route::post('resep/bahan/{id}', 'ResepController@storeBahan');
+Route::get('resep/bahan/{id}/edit', 'ResepController@editBahan');
+Route::put('resep/bahan/{id}', 'ResepController@updateBahan');
+Route::delete('resep/bahan/{id}', 'ResepController@removeBahan');

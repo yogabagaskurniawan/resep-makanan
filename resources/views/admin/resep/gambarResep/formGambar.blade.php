@@ -1,10 +1,7 @@
-@php
-  $data = !empty($data) ? 'Edit' : 'Tambah';
-@endphp
 
 <div class="card card-default">
   <div class="card-header card-header-border-bottom">
-    <h3>{{ $data }} Gambar</h3>
+    <h3>Tambah Gambar</h3>
   </div>
   <div class="card-body">
     <form method="POST" action="{{ url('resep/gambar', $resep->id) }}" enctype="multipart/form-data">
