@@ -50,7 +50,7 @@ class UserResepController extends Controller
     // ==================== artikel =======================
     public function showArtikel()
     {
-        $artikel = Artikel::get();
+        $artikel = Artikel::orderBy('created_at', 'desc')->get();
         return view('artikel', compact('artikel'), $this->data);
     }
 
@@ -65,4 +65,12 @@ class UserResepController extends Controller
         return view('detailArtikel', compact('artikel'), $this->data);
     }
     // ================== end artikel ===================
+
+    // ================== start contact ===================
+    public function contact()
+    {
+        return view('contact', $this->data);
+    }
+
+    // ================== end contact ===================
 }

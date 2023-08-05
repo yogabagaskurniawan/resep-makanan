@@ -1,18 +1,24 @@
 @extends('layoutUser.main')
 
 @section('content')
-    <!-- ##### Best Receipe Area Start ##### -->
-    <section class="best-receipe-area  section-padding-80-0">
-        <div class="container">
-            <div class="row">
+    <!-- ##### Breadcumb Area Start ##### -->
+    <div class="breadcumb-area bg-img bg-overlay" style="background-image: url({{ asset('templete/img/bg-img/r1.jpg') }});">
+        <div class="container h-100">
+            <div class="row h-100 align-items-center">
                 <div class="col-12">
-                    <div class="section-heading">
+                    <div class="breadcumb-text text-center text-white">
                         <h3>{{ $kategori1->nama }}</h3>
                         <h5 class="mt-4">Yuk mulai masak dengan berbagai olahan resep</h5>
                     </div>
                 </div>
             </div>
+        </div>
+    </div>
+    <!-- ##### Breadcumb Area End ##### -->
 
+    <!-- ##### Best Receipe Area Start ##### -->
+    <section class="best-receipe-area  section-padding-80-0">
+        <div class="container">
             <div class="row">
                 <!-- Single Best Receipe Area -->
                 @forelse ($resep as $resep)

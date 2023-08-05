@@ -113,7 +113,7 @@
                             <div class="classynav">
                                 <ul>
                                     {{-- <li class="active"><a href="index.html">Home</a></li> --}}
-                                    <li><a href="#">Resep</a>
+                                    <li><a href="/">Resep</a>
                                         <ul class="dropdown">
                                             @foreach ($kategori as $ktg)
                                                 <li><a href="{{ url('resep-makanan/'. $ktg->slug) }}">{{ $ktg->nama }}</a></li> 
@@ -121,8 +121,7 @@
                                         </ul>
                                     </li>
                                     <li><a href="/artikel-resep-makanan">Artikel</a></li>
-                                    <li><a href="receipe-post.html">4 Vegans</a></li>
-                                    <li><a href="contact.html">Contact</a></li>
+                                    <li><a href="/contact">Contact</a></li>
                                 </ul>
 
                                 <!-- Newsletter Form -->

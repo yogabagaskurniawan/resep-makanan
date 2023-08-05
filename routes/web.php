@@ -23,6 +23,9 @@ Route::get('/resep-makanan-detail/{slug}', 'UserResepController@detailResep');
 Route::get('/artikel-resep-makanan', 'UserResepController@showArtikel');
 Route::get('/artikel-makanan-detail/{slug}', 'UserResepController@detailArtikel');
 
+// contact
+Route::get('/contact', 'UserResepController@contact');
+
 Auth::routes();
 
 //  ===============================    ADMIN ======================================
