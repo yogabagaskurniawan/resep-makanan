@@ -1,11 +1,6 @@
 @extends('layoutUser.main')
 
 @section('content')
-    {{-- @forelse ($resep as $resep)
-        <h1>{{ $resep->judul }}</h1>
-    @empty
-        not record
-    @endforelse --}}
     <!-- ##### Best Receipe Area Start ##### -->
     <section class="best-receipe-area  section-padding-80-0">
         <div class="container">
