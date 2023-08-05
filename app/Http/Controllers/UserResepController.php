@@ -15,6 +15,37 @@ class UserResepController extends Controller
         $this->data['kategori'] = Resep_kategori::get();
     }
 
+    public function search(Request $request)
+    {
+        $keyword = $request->input('search');
+        $resepResults = $this->searchResep($keyword); // Gantikan dengan method pencarian untuk model Resep
+        $artikelResults = $this->searchArtikel($keyword); // Gantikan dengan method pencarian untuk model Artikel
+
+        return view('search', compact('resepResults', 'artikelResults', 'keyword'), $this->data);
+    }
+
+    private function searchResep($keyword)
+    {
+        return Resep::where(function ($query) use ($keyword) {
+            if ($keyword) {
+                $query->where('judul', 'like', '%' . $keyword . '%')
+                    ->orWhere('slug', 'like', '%' . $keyword . '%')
+                    ->orWhere('deskripsi', 'like', '%' . $keyword . '%');
+            }
+        })->get();
+    }
+
+    private function searchArtikel($keyword)
+    {
+        return Artikel::where(function ($query) use ($keyword) {
+            if ($keyword) {
+                $query->where('judul', 'like', '%' . $keyword . '%')
+                    ->orWhere('slug', 'like', '%' . $keyword . '%')
+                    ->orWhere('deskripsi', 'like', '%' . $keyword . '%');
+            }
+        })->get();
+    }
+
     public function index()
     {
         return view('home', $this->data);

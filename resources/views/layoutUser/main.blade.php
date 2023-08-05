@@ -42,8 +42,8 @@
         <div class="container">
             <div class="row">
                 <div class="col-12">
-                    <form action="#" method="post">
-                        <input type="search" name="search" placeholder="Type any keywords...">
+                    <form action="/search" method="GET">
+                        <input type="search" name="search" placeholder="Silahkan apa yang kamu cari...." value="{{ request('search') }}">
                         <button type="submit"><i class="fa fa-search" aria-hidden="true"></i></button>
                     </form>
                 </div>
@@ -113,6 +113,7 @@
                             <div class="classynav">
                                 <ul>
                                     {{-- <li class="active"><a href="index.html">Home</a></li> --}}
+                                    <li><a href="/">Home</a></li>
                                     <li><a href="/">Resep</a>
                                         <ul class="dropdown">
                                             @foreach ($kategori as $ktg)
