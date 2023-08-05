@@ -15,6 +15,7 @@ class UserResepController extends Controller
         $this->data['kategori'] = Resep_kategori::get();
     }
 
+    // ================ START Menu search =================
     public function search(Request $request)
     {
         $keyword = $request->input('search');
@@ -46,10 +47,27 @@ class UserResepController extends Controller
         })->get();
     }
 
+    // ================ END Menu search =================
+
+    // ================ START HOME =================
+    
     public function index()
     {
-        return view('home', $this->data);
+        // Mengambil artikel terbaru
+        $latestArtikel = Artikel::latest()->first();
+        
+        // Mengambil resep terbaru
+        $latestResep = Resep::latest()->first();
+        
+        $artikel = Artikel::latest()->take(3)->get();
+        $resep = Resep::latest()->take(3)->get();
+
+        return view('home', compact('latestArtikel', 'latestResep', 'resep', 'artikel'), $this->data);
     }
+    
+    // ================ END HHOME ==================
+    
+    // ================ START RESEP =================
     
     public function showResep($slug)
     {
@@ -78,7 +96,9 @@ class UserResepController extends Controller
         return view('detailResep', compact('resep'), $this->data);
     }
 
-    // ==================== artikel =======================
+    // ==================== END RESEP =======================
+
+    // ==================== START artikel =======================
     public function showArtikel()
     {
         $artikel = Artikel::orderBy('created_at', 'desc')->get();
