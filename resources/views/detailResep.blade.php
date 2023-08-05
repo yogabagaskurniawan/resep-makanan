@@ -42,10 +42,11 @@
         <div class="container">
 
             <div class="row">
-                <div class="col-12 col-md-8">
+                <div class="col-12">
                     <div class="receipe-headline my-5">
                         <span>{{ $resep->created_at->format('d F Y') }}</span>
                         <h2>{{ $resep->judul }}</h2>
+                        <p>{!! $resep->deskripsi !!}</p>
                         <div class="receipe-duration">
                             <h6>Waktu memasak {{ $resep->durasi }} menit</h6>
                             <h6>Resep ini untuk {{ $resep->porsi }} porsi</h6>

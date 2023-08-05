@@ -120,44 +120,7 @@
                                             @endforeach
                                         </ul>
                                     </li>
-                                    <li><a href="#">Mega Menu</a>
-                                        <div class="megamenu">
-                                            <ul class="single-mega cn-col-4">
-                                                <li class="title">Catagory</li>
-                                                <li><a href="index.html">Home</a></li>
-                                                <li><a href="about.html">About Us</a></li>
-                                                <li><a href="blog-post.html">Blog Post</a></li>
-                                                <li><a href="receipe-post.html">Receipe Post</a></li>
-                                                <li><a href="contact.html">Contact</a></li>
-                                                <li><a href="elements.html">Elements</a></li>
-                                            </ul>
-                                            <ul class="single-mega cn-col-4">
-                                                <li class="title">Catagory</li>
-                                                <li><a href="index.html">Home</a></li>
-                                                <li><a href="about.html">About Us</a></li>
-                                                <li><a href="blog-post.html">Blog Post</a></li>
-                                                <li><a href="receipe-post.html">Receipe Post</a></li>
-                                                <li><a href="contact.html">Contact</a></li>
-                                                <li><a href="elements.html">Elements</a></li>
-                                            </ul>
-                                            <ul class="single-mega cn-col-4">
-                                                <li class="title">Catagory</li>
-                                                <li><a href="index.html">Home</a></li>
-                                                <li><a href="about.html">About Us</a></li>
-                                                <li><a href="blog-post.html">Blog Post</a></li>
-                                                <li><a href="receipe-post.html">Receipe Post</a></li>
-                                                <li><a href="contact.html">Contact</a></li>
-                                                <li><a href="elements.html">Elements</a></li>
-                                            </ul>
-                                            <div class="single-mega cn-col-4">
-                                                <div class="receipe-slider owl-carousel">
-                                                    <a href="#"><img src="img/bg-img/bg1.jpg" alt=""></a>
-                                                    <a href="#"><img src="img/bg-img/bg6.jpg" alt=""></a>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </li>
-                                    <li><a href="receipe-post.html">Receipies</a></li>
+                                    <li><a href="/artikel-resep-makanan">Artikel</a></li>
                                     <li><a href="receipe-post.html">4 Vegans</a></li>
                                     <li><a href="contact.html">Contact</a></li>
                                 </ul>

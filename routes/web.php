@@ -14,10 +14,14 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-// Resep
+// Resep User
 Route::get('/', 'UserResepController@index');
 Route::get('/resep-makanan/{slug}', 'UserResepController@showResep');
 Route::get('/resep-makanan-detail/{slug}', 'UserResepController@detailResep');
+
+// artikel User
+Route::get('/artikel-resep-makanan', 'UserResepController@showArtikel');
+Route::get('/artikel-makanan-detail/{slug}', 'UserResepController@detailArtikel');
 
 Auth::routes();
 

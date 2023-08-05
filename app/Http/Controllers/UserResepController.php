@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Resep;
+use App\Artikel;
 use App\Resep_kategori;
 use Illuminate\Http\Request;
 
@@ -45,4 +46,23 @@ class UserResepController extends Controller
 
         return view('detailResep', compact('resep'), $this->data);
     }
+
+    // ==================== artikel =======================
+    public function showArtikel()
+    {
+        $artikel = Artikel::get();
+        return view('artikel', compact('artikel'), $this->data);
+    }
+
+    public function detailArtikel($slug)
+    {
+        $artikel = Artikel::where('slug', $slug)->first();
+
+        if (!$artikel) {
+            abort(404, 'Not Found');
+        }
+
+        return view('detailArtikel', compact('artikel'), $this->data);
+    }
+    // ================== end artikel ===================
 }
