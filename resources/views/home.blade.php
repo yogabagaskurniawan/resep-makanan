@@ -105,7 +105,7 @@
                                 <img src="{{ asset('templete/img/bg-img/r1.jpg') }}" alt="">
                             @endif
                             <div class="receipe-content">
-                                <a href="/resep-makanan-detail/{{ $artikel->slug }}">
+                                <a href="/artikel-makanan-detail/{{ $artikel->slug }}">
                                     <h5>{{ $artikel->judul }}</h5>
                                 </a>
                                 <p>{{ $artikel->created_at->format('d F Y') }}</p>

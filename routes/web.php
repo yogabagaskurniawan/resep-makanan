@@ -16,6 +16,7 @@ use Illuminate\Support\Facades\Route;
 
 // Resep User
 Route::get('/', 'UserResepController@index');
+// resep kategori
 Route::get('/resep-makanan/{slug}', 'UserResepController@showResep');
 Route::get('/resep-makanan-detail/{slug}', 'UserResepController@detailResep');
 
@@ -29,7 +30,9 @@ Route::get('/contact', 'UserResepController@contact');
 // search
 Route::get('/search', 'UserResepController@search');
 
-Auth::routes();
+Auth::routes([
+    'register' => false,
+]);
 
 //  ===============================    ADMIN ======================================
 

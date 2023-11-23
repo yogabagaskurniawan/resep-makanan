@@ -156,6 +156,7 @@
     <script src="{{ asset('templete/js/plugins/plugins.js') }}"></script>
     <!-- Active js -->
     <script src="{{ asset('templete/js/active.js') }}"></script>
+    @yield('script')
 </body>
 
 </html>
